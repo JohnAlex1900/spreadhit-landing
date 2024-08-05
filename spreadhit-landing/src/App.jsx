@@ -59,16 +59,16 @@ const App = () => {
             </Col>
           </Row>
 
+          <Header onJoinWaitlist={handleShowWaitlistForm} />
+          <Hero onJoinWaitlist={handleShowWaitlistForm} />
+          <Features onJoinWaitlist={handleShowWaitlistForm} />
+
           {/* Main Content */}
           <Routes>
             <Route
               path="/"
               element={
                 <>
-                  <Header onJoinWaitlist={handleShowWaitlistForm} />
-                  <Hero onJoinWaitlist={handleShowWaitlistForm} />
-                  <Features onJoinWaitlist={handleShowWaitlistForm} />
-
                   {/* Socials */}
                   <Row className="my-5">
                     <Col>
