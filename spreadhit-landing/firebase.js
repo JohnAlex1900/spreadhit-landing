@@ -10,17 +10,17 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAUIpKNLJja_PqHvqW1nMKQEt2n4xKvVVs",
+  apiKey: import.meta.env.VITE_API_KEY,
 
-  authDomain: "spread-hit-waitlist.firebaseapp.com",
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
 
-  projectId: "spread-hit-waitlist",
+  projectId: import.meta.env.VITE_PROJECT_ID,
 
-  storageBucket: "spread-hit-waitlist.appspot.com",
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
 
-  messagingSenderId: "19949610817",
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
 
-  appId: "1:19949610817:web:e5caac5e10cf55894523c0",
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
