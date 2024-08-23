@@ -34,8 +34,8 @@ const App = () => {
       <div className="App">
         <Container fluid>
           {/* Header */}
-          <Row className="py-4 bg-light text-black border-bottom shadow-sm">
-            <Col className="ms-3">
+          <Row className="bg-light text-black border-bottom shadow-sm">
+            <Col className="ms-3 my-4">
               <Link
                 to="/"
                 className="d-flex align-items-center text-black text-decoration-none"
@@ -43,15 +43,17 @@ const App = () => {
                 <img
                   src={logo}
                   alt="SpreadHit Logo"
-                  style={{ height: "32px" }}
+                  style={{
+                    height: "36px",
+                  }}
                 />
-                <span className="ms-2 h4 mt-3">SpreadHit</span>
+                <span className="ms-2 h4 mt-1">SpreadHit</span>
               </Link>
             </Col>
             <Col className="d-flex justify-content-end">
               <Button
                 variant="info"
-                className="text-white me-3"
+                className="text-white me-3 my-4"
                 onClick={handleShowWaitlistForm}
               >
                 Join Waitlist
