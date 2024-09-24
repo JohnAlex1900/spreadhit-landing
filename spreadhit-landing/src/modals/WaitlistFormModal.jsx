@@ -55,7 +55,7 @@ const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
 
         // Call backend to send confirmation email
         const response = await fetch(
-          "https://spreadhit-landing-a6b57f353e07.herokuapp.com/send_confirmation_email",
+          "https://spreadhit-landing-backend-5033b9703b68.herokuapp.com/send_confirmation_email",
           {
             method: "POST",
             headers: {
