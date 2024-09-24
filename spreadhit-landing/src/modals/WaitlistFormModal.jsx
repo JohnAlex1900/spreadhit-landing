@@ -65,17 +65,18 @@ const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
           }
         );
 
-        if (response.ok) {
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error("Backend error: ", errorData); // Log the exact error from the backend
+          setError(`Error sending confirmation email: ${errorData.message}`);
+          setLoading(false);
+        } else {
           handleSubmit({ name, email });
           handleClose();
-
           setTimeout(() => {
             setLoading(false);
             handleShowSuccessModal();
           }, 500);
-        } else {
-          setError("Error sending confirmation email.");
-          setLoading(false);
         }
       }
     } catch (err) {
