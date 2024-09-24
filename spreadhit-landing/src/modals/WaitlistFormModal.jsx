@@ -37,35 +37,51 @@ const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
       return;
     }
 
-    setLoading(true); // Start the loading spinner
+    setLoading(true);
 
     try {
       const userExists = await checkIfUserExists(email);
 
       if (userExists) {
         setError("This email is already on the waitlist.");
-        setLoading(false); // Stop the loading spinner if there's an error
+        setLoading(false);
       } else {
+        // Add user to Firestore
         const docRef = await addDoc(collection(db, "waitlist"), {
           name: name,
           email: email,
         });
         await setDoc(docRef, { name, email });
 
-        handleSubmit({ name, email });
+        // Call backend to send confirmation email
+        const response = await fetch(
+          "https://spreadhit-landing-a6b57f353e07.herokuapp.com/send_confirmation_email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, email }),
+          }
+        );
 
-        handleClose(); // Close the modal first
+        if (response.ok) {
+          handleSubmit({ name, email });
+          handleClose();
 
-        // Introduce a delay before showing the success modal
-        setTimeout(() => {
-          setLoading(false); // Stop the loading spinner
-          handleShowSuccessModal(); // Show the success modal
-        }, 500); // Adjust the delay as needed (500ms in this example)
+          setTimeout(() => {
+            setLoading(false);
+            handleShowSuccessModal();
+          }, 500);
+        } else {
+          setError("Error sending confirmation email.");
+          setLoading(false);
+        }
       }
     } catch (err) {
       console.error("Error adding to waitlist: ", err);
       setError("An error occurred. Please try again.");
-      setLoading(false); // Stop the loading spinner in case of an error
+      setLoading(false);
     }
   };
 
