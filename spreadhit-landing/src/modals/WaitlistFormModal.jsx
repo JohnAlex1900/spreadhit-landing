@@ -66,10 +66,11 @@ const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
           }
         );
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error("Backend error: ", errorData); // Log the exact error from the backend
-          setError(`Error sending confirmation email: ${errorData.message}`);
+        if (response.status !== 200) {
+          console.error("Backend error: ", response.data); // Log the exact error from the backend
+          setError(
+            `Error sending confirmation email: ${response.data.message}`
+          );
           setLoading(false);
         } else {
           handleSubmit({ name, email });
