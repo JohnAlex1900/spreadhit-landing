@@ -57,12 +57,12 @@ const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
         // Call backend to send confirmation email
         const response = await axios.post(
           "https://spreadhit-landing-backend.onrender.com/send_confirmation_email",
+          { name, email },
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, email }),
           }
         );
 
