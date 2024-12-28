@@ -12,6 +12,7 @@ import { db } from "../../firebase";
 import PropTypes from "prop-types";
 import SuccessModal from "./SuccessModal";
 import LoadingSpinner from "../components/LoadingSpinner";
+import axios from "axios";
 
 const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -54,8 +55,8 @@ const WaitlistFormModal = ({ show, handleClose, handleSubmit }) => {
         await setDoc(docRef, { name, email });
 
         // Call backend to send confirmation email
-        const response = await fetch(
-          "https://spreadhit-landing-backend-5033b9703b68.herokuapp.com/send_confirmation_email",
+        const response = await axios.post(
+          "https://spreadhit-landing-backend.onrender.com/send_confirmation_email",
           {
             method: "POST",
             headers: {
