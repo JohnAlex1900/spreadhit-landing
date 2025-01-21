@@ -41,7 +41,7 @@ const PrivacyModal = ({ show, handleClose }) => {
           from time to time. <br />
           <br />
           <h4>7. Contact Us</h4> If you have any questions about our Privacy
-          Policy, please contact us at [email protected].
+          Policy, please contact us at support@spreadhit.com.
           <br />
         </p>
         <Form.Check
