@@ -10,6 +10,8 @@ import Header from "./header/Header";
 import Hero from "./hero/Hero";
 import Features from "./features/Features";
 import "./App.css";
+import PrivacyPolicy from "./privacy/PrivacyPolicy";
+import Terms from "./terms/Terms";
 
 const App = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -114,6 +116,8 @@ const App = () => {
                 </>
               }
             />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
 
           {/* Footer */}
